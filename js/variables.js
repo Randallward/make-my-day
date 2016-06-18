@@ -7,7 +7,7 @@ var Choices = {
             labelLetter: 'P',
             markerColor: 'green',
             type: 'parking',
-            placeID: 'ChIJXUecQqe1RIYRoSPukdpTk-Y',
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28',
         },
         restaurant: {
             name: 'Roaring Fork',
@@ -15,7 +15,7 @@ var Choices = {
             labelLetter: 'R',
             markerColor: 'blue',
             type: 'restaurant',
-            placeID: 'ChIJ1XlZ4Qm1RIYR4rpevy6Ybs4'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         bar: {
             name: 'BaseCamp',
@@ -23,7 +23,7 @@ var Choices = {
             labelLetter: 'B',
             markerColor: 'red',
             type: 'bar',
-            placeID: 'ChIJIzM0rAm1RIYR-OnlASdacUA'
+            placeID: 'ChIJ_SqzjOy1RIYR09ZBlUuVbyc'
         },
         zipCode: '78701'
     }, {
@@ -33,7 +33,7 @@ var Choices = {
             labelLetter: 'P',
             markerColor: 'green',
             type: 'parking',
-            placeID: 'ChIJXUecQqe1RIYRoSPukdpTk-Y'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         restaurant: {
             name: 'Second Bar + Kitchen',
@@ -41,7 +41,7 @@ var Choices = {
             labelLetter: 'S',
             markerColor: 'blue',
             type: 'restaurant',
-            placeID: 'ChIJjxgwfgi1RIYRFkkL2iIIb8g'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         bar: {
             name: 'Garage',
@@ -49,7 +49,7 @@ var Choices = {
             labelLetter: 'G',
             markerColor: 'red',
             type: 'bar',
-            placeID: 'ChIJWdi3AAm1RIYRVOzVjpc3hOQ'
+            placeID: 'ChIJ_SqzjOy1RIYR09ZBlUuVbyc'
         },
         zipCode: '78701'
     }, {
@@ -59,7 +59,7 @@ var Choices = {
             labelLetter: 'A',
             markerColor: 'green',
             type: 'parking',
-            placeID: 'ChIJ3wMgaai1RIYRVZMKbj5DQTA'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         restaurant: {
             name: 'Sway',
@@ -67,7 +67,7 @@ var Choices = {
             labelLetter: 'S',
             markerColor: 'blue',
             type: 'restaurant',
-            placeID: 'ChIJX5qi8OK0RIYR4SjE2J7x0_Y'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         bar: {
             name: 'Osteria Pronto',
@@ -75,7 +75,7 @@ var Choices = {
             labelLetter: 'O',
             markerColor: 'red',
             type: 'bar',
-            placeID: 'ChIJ65Af3ge1RIYR3TKbll9BteA'
+            placeID: 'ChIJ_SqzjOy1RIYR09ZBlUuVbyc'
         },
         zipCode: '78704'
     }, {
@@ -85,7 +85,7 @@ var Choices = {
             labelLetter: 'E',
             markerColor: 'green',
             type: 'parking',
-            placeID: 'ChIJlWVeRRPKRIYRQOh6zIKV2Gs'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         restaurant: {
             name: 'Foreign and Domestic',
@@ -93,7 +93,7 @@ var Choices = {
             labelLetter: 'F',
             markerColor: 'blue',
             type: 'restaurant',
-            placeID: 'ChIJEaO0VhPKRIYRmmIiuYiG3hw'
+            placeID: 'ChIJ61i-aZO1RIYRKgxgoJHJc28'
         },
         bar: {
             name: 'Drink Well',
@@ -101,7 +101,7 @@ var Choices = {
             labelLetter: 'D',
             markerColor: 'red',
             type: 'bar',
-            placeID: 'ChIJc262qWzKRIYRxo9PBUampxk'
+            placeID: 'ChIJ_SqzjOy1RIYR09ZBlUuVbyc'
         },
         zipCode: '78751'
     }, {
@@ -394,107 +394,3 @@ var Choices = {
         zipCode: '78701'
     }]
 }
-
-
-
-function googleMap(date) {
-    /////////add a custom icon to labelLetter! /////////////
-    $('#make-my-day').on('click', function() {
-        function showWeather() {
-            console.log('weather');
-            var key = '7f2c1ad71abdf07a660a8667474497f2';
-            var zip = date.zipCode;
-            var requestURL = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zip + ',us&units=imperial&APPID=' + key
-
-            $.ajax({
-                    url: requestURL,
-                    method: 'GET'
-                })
-                .done(function(response) {
-
-                    var currentTemp = $('<p>').text('Current Temp: ' + Math.round(response.main.temp) + ' degrees');
-                    var highTemp = $('<p>').text('High Today: ' + Math.round(response.main.temp_max) + ' degrees');
-                    var humidity = $('<p>').text('Humidity: ' + response.main.humidity + ' percent');
-                    var windSpeed = $('<p>').text('Wind Speed: ' + response.wind.speed + ' mph');
-
-                    $('#weather').html('');
-
-                    $('#weather').append(currentTemp);
-                    $('#weather').append(highTemp);
-                    $('#weather').append(humidity);
-                    $('#weather').append(windSpeed);
-
-                })
-        };
-
-        var map;
-        /// creates the map
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('googlemap'), {
-                // got lazy, set the center to Austin
-                center: { lat: 30.267153, lng: -97.743061 },
-                zoom: 15
-            });
-
-        }
-        //creates an ajax call to determine the weather at a specific zip code
-        showWeather();
-        initMap();
-        /// creates clickable markers
-        var infowindow = new google.maps.InfoWindow();
-        ///creates a boundary for each marker to change map size
-        var bounds = new google.maps.LatLngBounds();
-        /// creates a new location/places call
-        var newLocale = new google.maps.places.PlacesService(map);
-        console.log(newLocale);
-        /// stores data from the date choice. NEEDS PARKING INFO ///
-        var locationArray = [date.restaurant.placeID, date.bar.placeID, date.parking.placeID];
-        /// generates markers and corresponding dynamic html
-        for (i = 0; i < locationArray.length; i++) {
-            newLocale.getDetails({
-                placeId: locationArray[i]
-            }, function(place, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: place.geometry.location,
-                    });
-                    /// dynamic html
-                    console.log(place.name);
-                    $('#googleplacedata').append('<div class="placeNameData">' + place.name + '</div><div class="placeFormattedAddressData">' + place.formatted_address + '</div><div class="placePriceLevelData">' + 'Price Level: ' + place.price_level + '</div><div class="placePhoneNumberData">' + place.international_phone_number + '</div>');
-                    $('#googleplacedata').append('<div class="placeHoursTitleData">Hours</div><div class="placeHoursData">' + place.opening_hours.weekday_text[0] + '<br>' + place.opening_hours.weekday_text[1] + '<br>' + place.opening_hours.weekday_text[2] + '<br>' + place.opening_hours.weekday_text[3] + '<br>' + place.opening_hours.weekday_text[4] + '<br>' + place.opening_hours.weekday_text[5] + '<br>' + place.opening_hours.weekday_text[6] + '<br>' + '</div>');
-                    $('#googleplacedata').append('<div class="placeWebsiteData"><a href="' + place.website + '">' + place.website + '</a></div>')
-                        /// changes map size
-                    bounds.extend(marker.position);
-                    /// makes markers clickable
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address + '</div>');
-                        infowindow.open(map, this);
-                    });
-                    /// fits map to new boundaries
-                    map.fitBounds(bounds);
-                }
-            });
-        };
-    })
-};
-
-$(document).ready(function() {
-    // $(this).scrollTop(0);
-    $('#make-my-day').hide();
-    $('#dropdownMenu1').on('click', function(date) {
-        $('#make-my-day').show('slow');
-        var date = Choices.dateNights[Math.floor(Math.random() * Choices.dateNights.length)];
-        googleMap(date);
-    });
-    $('#dropdownMenu3').on('click', function(date) {
-        $('#make-my-day').show('slow');
-        var date = Choices.totallyAustin[Math.floor(Math.random() * Choices.totallyAustin.length)];
-        googleMap(date);
-    });
-    $('#dropdownMenu2').on('click', function(date) {
-        $('#make-my-day').show('slow');
-        var date = Choices.happyHour[Math.floor(Math.random() * Choices.happyHour.length)];
-        googleMap(date);
-    })
-});

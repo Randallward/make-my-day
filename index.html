@@ -37,11 +37,14 @@
                 
             </div>
 
-            <a href="#about" id="make-my-day" class="btn btn-dark btn-lg">Make My Day</a>
+            <a href="#about" id="make-my-day" class="btn btn-dark btn-lg" onclick="resetElement()" >Make My Day</a>
             
         </div>
     </header>
+
     <!-- About -->
+
+<div class ="hidden" id="hidenseek">
     <div class="fullscreen-bg">
         <video loop muted autoplay poster="img/videoframe.png" class="fullscreen-bg__video">
             <source src="video/bg2.mp4" type="video/mp4">
@@ -71,7 +74,7 @@
                     <button type="button" onclick="javascript:window.location.reload();$(document).scrollTop(0);" id="resetButton">Reset</button>
                     <ul class="list-unstyled">
                         <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">Contact@example.com</a>
                         </li>
                     </ul>
                     <br>
@@ -91,6 +94,7 @@
                 </div>
             </div>
         </div>
+</div>    
     </footer>
 
     <!-- jQuery -->
@@ -117,10 +121,23 @@
         });
     });
     </script>
+        <script>
+            $(document).ready(function() {
+    $("div#hidenseek").removeClass("hidden");
+});
+        </script>
+    <script>
+          function resetElement() {
+    document.getElementById("hidenseek").style.display = "block";
+    document.getElementById("hidenseek").style.visibility = "visible";
+}  
+        </script> 
+
+
     <!-- Our Proprietary JS -->
     <script src="js/makemyday.js" type="text/javascript" charset="utf-8" async defer></script>
     <!-- Weather API -->
-    <script src="js/weather.js" type="text/javascript"></script>
+    <!-- <script src="js/weather.js" type="text/javascript"></script> -->
     <!-- Google Places API. needs to be last-->
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1HEKxkiAsyrFzLSt_Mm39q0_lR8U4UgU&libraries=places"></script>
 </body>
